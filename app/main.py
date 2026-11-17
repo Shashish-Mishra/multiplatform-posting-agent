@@ -1,6 +1,7 @@
 """FastAPI application exposing the /posting endpoint."""
 from fastapi import FastAPI
 from fastapi.exceptions import RequestValidationError
+from fastapi.openapi.docs import get_redoc_html
 from fastapi.responses import JSONResponse
 
 from app.schemas import PostRequest, PostResponse
@@ -13,6 +14,7 @@ app = FastAPI(
         "third-party platforms (Telegram, Discord, Slack, Mastodon, GitHub Gist)."
     ),
     version="1.0.0",
+    redoc_url=None,
 )
 
 
@@ -42,6 +44,15 @@ async def root():
 @app.get("/health")
 async def health():
     return {"status": "ok"}
+
+
+@app.get("/redoc", include_in_schema=False)
+async def redoc():
+    return get_redoc_html(
+        openapi_url=app.openapi_url,
+        title=f"{app.title} - ReDoc",
+        redoc_js_url="https://cdn.jsdelivr.net/npm/redoc@2.1.5/bundles/redoc.standalone.js",
+    )
 
 
 @app.post("/posting", response_model=PostResponse)
