@@ -1,0 +1,28 @@
+/Users/shashish/development/gitlab/test/automated-posting/.venv/lib/python3.12/site-packages/pytest_asyncio/plugin.py:208: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to function scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session"
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+============================= test session starts ==============================
+platform darwin -- Python 3.12.10, pytest-8.3.3, pluggy-1.7.0 -- /Users/shashish/development/gitlab/test/automated-posting/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/shashish/development/gitlab/test/automated-posting
+plugins: asyncio-0.24.0, anyio-4.16.0
+asyncio: mode=Mode.STRICT, default_loop_scope=None
+collecting ... collected 8 items
+
+tests/test_posting.py::test_message_too_long_rejected PASSED             [ 12%]
+tests/test_posting.py::test_message_without_url_rejected PASSED          [ 25%]
+tests/test_posting.py::test_message_with_two_urls_rejected PASSED        [ 37%]
+tests/test_posting.py::test_message_with_invalid_url_rejected PASSED     [ 50%]
+tests/test_posting.py::test_valid_message_passes_validation PASSED       [ 62%]
+tests/test_posting.py::test_one_platform_failing_does_not_block_others PASSED [ 75%]
+tests/test_posting.py::test_all_platforms_failing_reports_overall_failure PASSED [ 87%]
+tests/test_posting.py::test_success_result_contains_required_fields PASSED [100%]
+
+=============================== warnings summary ===============================
+.venv/lib/python3.12/site-packages/starlette/testclient.py:40
+  /Users/shashish/development/gitlab/test/automated-posting/.venv/lib/python3.12/site-packages/starlette/testclient.py:40: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = typing.Callable[[], typing.ContextManager[anyio.abc.BlockingPortal]]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+========================= 8 passed, 1 warning in 0.26s =========================
